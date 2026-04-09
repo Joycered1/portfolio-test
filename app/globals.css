@@ -1,0 +1,101 @@
+/* ─── Dark theme (default) ─────────────────────────────── */
+:root,
+[data-theme="dark"] {
+  --bg: #0b0b0b;
+  --surface: #141414;
+  --card: #1a1a1a;
+  --border: #242424;
+  --text: #efefef;
+  --text-secondary: #7a7a7a;
+  --text-muted: #404040;
+  --accent: #ff5c3a;
+  --accent-hover: #ff7a5c;
+  --accent-dim: rgba(255, 92, 58, 0.08);
+  --accent-border: rgba(255, 92, 58, 0.2);
+  --shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+}
+
+/* ─── Light theme ──────────────────────────────────────── */
+[data-theme="light"] {
+  --bg: #f7f6f3;
+  --surface: #eeecea;
+  --card: #ffffff;
+  --border: #e0dcd8;
+  --text: #111111;
+  --text-secondary: #575757;
+  --text-muted: #a0a0a0;
+  --accent: #e8431e;
+  --accent-hover: #d13918;
+  --accent-dim: rgba(232, 67, 30, 0.07);
+  --accent-border: rgba(232, 67, 30, 0.18);
+  --shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+}
+
+/* ─── Typography ───────────────────────────────────────── */
+:root {
+  --font-heading: var(--font-red-hat), "Red Hat Display", sans-serif;
+  --font-body: var(--font-epilogue), "Epilogue", sans-serif;
+
+  /* Layout */
+  --container: 1200px;
+  --section-y: 120px;
+  --radius: 10px;
+  --ease: 0.25s ease;
+}
+
+/* ─── Reset ────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img,
+svg {
+  display: block;
+}
+
+/* ─── Utility ──────────────────────────────────────────── */
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 48px;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --section-y: 80px;
+  }
+
+  .container {
+    padding: 0 24px;
+  }
+}

@@ -1,0 +1,114 @@
+.section {
+  padding: var(--section-y) 0;
+  border-top: 1px solid var(--border);
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0;
+}
+
+.label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+
+.title {
+  font-family: var(--font-heading);
+  font-size: clamp(36px, 6vw, 72px);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 1.0;
+  color: var(--text);
+  margin-bottom: 20px;
+}
+
+.sub {
+  font-size: clamp(15px, 1.6vw, 18px);
+  color: var(--text-secondary);
+  max-width: 440px;
+  line-height: 1.7;
+  margin-bottom: 44px;
+}
+
+.email {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-heading);
+  font-size: clamp(18px, 2.8vw, 28px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  padding: 18px 36px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  transition: border-color var(--ease), background var(--ease), color var(--ease);
+  margin-bottom: 52px;
+}
+
+.email:hover {
+  border-color: var(--accent);
+  background: var(--accent-dim);
+  color: var(--accent);
+}
+
+.email svg {
+  transition: transform var(--ease);
+}
+
+.email:hover svg {
+  transform: translate(2px, -2px);
+}
+
+.divider {
+  width: 48px;
+  height: 1px;
+  background: var(--border);
+  margin-bottom: 32px;
+}
+
+.socialLabel {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 20px;
+}
+
+.socials {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.socialLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  padding: 8px 16px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--card);
+  transition: border-color var(--ease), color var(--ease), background var(--ease);
+}
+
+.socialLink:hover {
+  border-color: var(--text-muted);
+  color: var(--text);
+  background: var(--surface);
+}
