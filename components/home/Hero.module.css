@@ -7,10 +7,18 @@
   overflow: hidden;
 }
 
+/* two-column: text left, photo right */
 .inner {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 64px;
+  align-items: flex-end;
+  width: 100%;
+}
+
+.content {
   display: flex;
   flex-direction: column;
-  gap: 0;
 }
 
 /* availability badge */
@@ -46,7 +54,7 @@
 /* heading */
 .heading {
   font-family: var(--font-heading);
-  font-size: clamp(64px, 10vw, 128px);
+  font-size: clamp(64px, 9vw, 120px);
   font-weight: 700;
   line-height: 0.92;
   letter-spacing: -0.035em;
@@ -54,7 +62,7 @@
   margin-bottom: 32px;
 }
 
-.heading .accent {
+.accent {
   color: var(--accent);
 }
 
@@ -63,12 +71,12 @@
   display: flex;
   align-items: center;
   gap: 16px;
-  margin-bottom: 28px;
+  margin-bottom: 24px;
 }
 
 .role {
   font-family: var(--font-heading);
-  font-size: clamp(16px, 2.2vw, 22px);
+  font-size: clamp(15px, 2vw, 20px);
   font-weight: 600;
   color: var(--text-secondary);
   letter-spacing: -0.01em;
@@ -76,7 +84,7 @@
 
 .divider {
   width: 1px;
-  height: 20px;
+  height: 18px;
   background: var(--border);
   flex-shrink: 0;
 }
@@ -89,11 +97,11 @@
 
 /* tagline */
 .tagline {
-  font-size: clamp(15px, 1.6vw, 18px);
+  font-size: clamp(15px, 1.5vw, 17px);
   color: var(--text-secondary);
-  max-width: 480px;
+  max-width: 460px;
   line-height: 1.7;
-  margin-bottom: 52px;
+  margin-bottom: 48px;
 }
 
 /* CTAs */
@@ -138,7 +146,7 @@
 
 .btnSecondary:hover {
   border-color: var(--text-secondary);
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(128, 128, 128, 0.06);
   transform: translateY(-2px);
 }
 
@@ -149,6 +157,35 @@
 .btnPrimary:hover .arrow,
 .btnSecondary:hover .arrow {
   transform: translateX(3px);
+}
+
+/* ── profile photo ──────────────────── */
+.photoWrap {
+  position: relative;
+  flex-shrink: 0;
+  margin-bottom: 8px;
+}
+
+.photoRing {
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  padding: 3px;
+  background: conic-gradient(
+    var(--accent) 0%,
+    var(--accent-border) 40%,
+    transparent 60%
+  );
+}
+
+.photo {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  background: var(--surface);
 }
 
 /* scroll indicator */
@@ -172,15 +209,30 @@
   background: linear-gradient(to bottom, transparent, var(--text-muted));
 }
 
-/* Entrance animations handled by Framer Motion in Hero.tsx */
+/* ── responsive ─────────────────────── */
+@media (max-width: 900px) {
+  .inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
 
-@media (max-width: 768px) {
-  .hero {
-    padding-bottom: 80px;
+  .photoWrap {
+    order: -1;
+  }
+
+  .photoRing {
+    width: 120px;
+    height: 120px;
   }
 
   .scroll {
     display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero {
+    padding-bottom: 80px;
   }
 
   .meta {

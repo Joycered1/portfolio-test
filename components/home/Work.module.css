@@ -43,33 +43,28 @@
   padding-bottom: 4px;
 }
 
-.viewAll:hover {
-  color: var(--text);
-}
+.viewAll:hover { color: var(--text); }
 
-.viewAll svg {
-  transition: transform var(--ease);
-}
+.viewAll svg { transition: transform var(--ease); }
+.viewAll:hover svg { transform: translate(2px, -2px); }
 
-.viewAll:hover svg {
-  transform: translate(2px, -2px);
-}
-
-/* ── grid ─────────────────────────────────────── */
+/* ── grid ──────────────────────────────────────── */
 .grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
 }
 
-/* StaggerItem renders a motion.div — give it full height so card fills it */
+/* StaggerItem host */
 .cardWrapper {
   display: flex;
   flex-direction: column;
 }
 
-/* ── card ─────────────────────────────────────── */
+/* ── card (button reset + design) ─────────────── */
 .card {
+  all: unset;
+  cursor: pointer;
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: var(--radius);
@@ -77,6 +72,8 @@
   display: flex;
   flex-direction: column;
   flex: 1;
+  width: 100%;
+  text-align: left;
   transition: border-color var(--ease), box-shadow var(--ease), transform var(--ease);
 }
 
@@ -86,26 +83,58 @@
   transform: translateY(-4px);
 }
 
-/* thumbnail */
+.card:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* ── thumbnail ──────────────────────────────────── */
 .thumbnail {
   aspect-ratio: 16 / 9;
   overflow: hidden;
   background: var(--surface);
   position: relative;
+  flex-shrink: 0;
 }
 
+/* static image — scales on card hover */
 .thumbnailImg {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform 0.5s ease;
+  display: block;
 }
 
-.card:hover .thumbnailImg {
-  transform: scale(1.04);
+.zoomed {
+  transform: scale(1.05);
 }
 
-/* body */
+/* gradient fallback — shown by default for GIF projects */
+.thumbnailGradient {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.thumbLabel {
+  font-family: var(--font-heading);
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  opacity: 0.15;
+  color: #fff;
+  user-select: none;
+  transition: opacity 0.2s ease;
+}
+
+.card:hover .thumbLabel {
+  opacity: 0.25;
+}
+
+/* ── card body ──────────────────────────────────── */
 .cardBody {
   padding: 24px;
   display: flex;
@@ -183,15 +212,13 @@
   transition: gap var(--ease);
 }
 
-.cardLink:hover {
+.card:hover .cardLink {
   gap: 10px;
 }
 
+/* ── responsive ─────────────────────────────────── */
 @media (max-width: 768px) {
-  .grid {
-    grid-template-columns: 1fr;
-  }
-
+  .grid { grid-template-columns: 1fr; }
   .header {
     flex-direction: column;
     align-items: flex-start;
