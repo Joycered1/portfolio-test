@@ -9,6 +9,8 @@ const navLinks = [
   { label: "Work", href: "#work" },
   { label: "About", href: "#about" },
   { label: "Skills", href: "#skills" },
+  { label: "Articles", href: "/articles" },
+  { label: "News", href: "/news" },
 ];
 
 function SunIcon() {
@@ -61,7 +63,11 @@ export default function Navbar() {
           <ul className={styles.links}>
             {navLinks.map((l) => (
               <li key={l.label}>
-                <a href={l.href}>{l.label}</a>
+                {l.href.startsWith("/") ? (
+                  <Link href={l.href}>{l.label}</Link>
+                ) : (
+                  <a href={l.href}>{l.label}</a>
+                )}
               </li>
             ))}
             <li>
@@ -105,11 +111,17 @@ export default function Navbar() {
       {open && (
         <div className="container">
           <div className={styles.drawer}>
-            {navLinks.map((l) => (
-              <a key={l.label} href={l.href} onClick={() => setOpen(false)}>
-                {l.label}
-              </a>
-            ))}
+            {navLinks.map((l) =>
+              l.href.startsWith("/") ? (
+                <Link key={l.label} href={l.href} onClick={() => setOpen(false)}>
+                  {l.label}
+                </Link>
+              ) : (
+                <a key={l.label} href={l.href} onClick={() => setOpen(false)}>
+                  {l.label}
+                </a>
+              )
+            )}
             <a
               href="#contact"
               className={styles.ctaMobile}
